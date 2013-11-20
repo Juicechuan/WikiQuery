@@ -1,0 +1,23 @@
+import java.util.HashSet;
+
+public class Stopwords {
+	protected HashSet m_Words = null;
+
+	protected static Stopwords m_Stopwords;
+
+	static {
+		if (m_Stopwords == null) {
+			m_Stopwords = new Stopwords();
+		}
+	}
+
+	public Stopwords() {
+		m_Words = new HashSet();
+
+	}
+
+	public void add(String word) {
+		if (word.trim().length() > 0)
+			m_Words.add(word.trim().toLowerCase());
+	}
+}

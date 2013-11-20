@@ -1,0 +1,22 @@
+import java.io.IOException;
+
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
+import org.apache.hadoop.mapred.MapReduceBase;
+import org.apache.hadoop.mapred.Mapper;
+import org.apache.hadoop.mapred.OutputCollector;
+import org.apache.hadoop.mapred.Reporter;
+
+import edu.umd.cloud9.collection.wikipedia.WikipediaPage;
+
+public class StopwordsRemovalMapper extends MapReduceBase implements
+		Mapper<LongWritable, WikipediaPage, Text, Text> {
+
+	public void map(LongWritable key, WikipediaPage values,
+			OutputCollector output, Reporter reporter) throws IOException {
+	}
+
+
+}

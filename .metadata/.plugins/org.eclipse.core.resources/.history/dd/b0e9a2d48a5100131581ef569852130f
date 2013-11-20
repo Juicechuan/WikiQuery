@@ -1,0 +1,50 @@
+import org.apache.hadoop.conf.*;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.*;
+import org.apache.hadoop.mapred.*;
+import org.apache.hadoop.mapred.lib.ChainMapper;
+import org.apache.hadoop.util.*;
+
+import edu.umd.cloud9.collection.wikipedia.*;
+
+public class ChainInvertedIndexDriver extends Configured implements Tool {
+
+	public static void main(String[] args) throws Exception {
+		ToolRunner.run(new Configuration(), new ChainInvertedIndexDriver(),
+				args);
+	}
+
+	@Override
+	public int run(String[] arg0) throws Exception {
+		JobClient client = new JobClient();
+		JobConf conf = new JobConf(ChainInvertedIndexDriver.class);
+
+		conf.setInputFormat(WikipediaPageInputFormatOld.class);
+		conf.setOutputFormat(TextOutputFormat.class);
+
+		Path outputPath = new Path("output");
+		FileInputFormat.addInputPath(conf, new Path("input"));
+		FileOutputFormat.setOutputPath(conf, outputPath);
+
+		outputPath.getFileSystem(conf).delete(outputPath, true);
+
+		JobConf mapConf1 = new JobConf(false);
+		// build basic inverted index
+		ChainMapper.addMapper(conf, ChainInvertedIndexMapper.class,
+				LongWritable.class, WikipediaPage.class, Text.class,
+				Text.class, true, mapConf1);
+		JobConf mapConf2 = new JobConf(false);
+		// do stopwords elimination based on stopword set for English
+		ChainMapper.addMapper(conf, StopwordsRemovalMapper.class, Text.class,
+				Text.class, Text.class, Text.class, true, mapConf2);
+
+		client.setConf(conf);
+		try {
+			JobClient.runJob(conf);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+}

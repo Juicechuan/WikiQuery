@@ -1,0 +1,14 @@
+import java.util.HashSet;
+
+
+public class Stopwords {
+	protected HashSet m_Words = null;
+	
+	protected static StopWords m_Stopwords;
+	
+	static {
+		if (m_Stopwords == null){
+			m_Stopwords = new Stopwords();
+		}
+	}
+}
