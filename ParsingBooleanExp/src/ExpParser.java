@@ -2,6 +2,7 @@ import java.util.LinkedList;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.apache.commons.lang.StringUtils;
 
 public class ExpParser {
 
@@ -16,21 +17,31 @@ public class ExpParser {
 			if (m.group().matches("\\(")){
 				opStack.push(m.group());
 			}
-			else if (m.group().matches("[^\\(\\)(OR)(AND)(NOT)\\s]+)")){
+			else if (m.group().matches("[^\\(\\)(OR)(AND)(NOT)\\s]+")){
 				outputQueue.add(m.group());
 			}
 			else if (m.group().matches("((OR)|(AND)|(NOT))")){
 				opStack.push(m.group());
 			}
 			else if (m.group().matches("\\)")){
-				while (!opStack.peek().matches("\\(")){
+				while ((!opStack.isEmpty())&&(!opStack.peek().matches("\\("))){
 					outputQueue.add(opStack.pop());
+				}
+				if (!opStack.isEmpty()){
+					opStack.pop();
+					if (!opStack.isEmpty() && opStack.peek().matches("((OR)|(AND)|(NOT))")){
+						outputQueue.add(opStack.pop());
+					}
+				}else{
+					System.err.println("Invalid boolean expression format! " + exp);
 				}
 			}
 					
 			System.out.println(m.group());
 		}
-		return null;
+		
+		
+		return StringUtils.join(outputQueue, " ");
 
 	}
 
@@ -39,5 +50,6 @@ public class ExpParser {
 		String exp = "(madding OR crowd) AND (ignoble OR strife) AND (killed OR slain)";
 		ExpParser e = new ExpParser();
 		String result = e.parse(exp);
+		System.out.println(result);
 	}
 }
