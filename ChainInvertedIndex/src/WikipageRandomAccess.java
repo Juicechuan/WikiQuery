@@ -1,0 +1,11 @@
+import edu.umd.cloud9.collection.wikipedia.*;
+
+
+public class WikipageRandomAccess {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

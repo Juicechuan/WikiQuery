@@ -48,7 +48,6 @@ public class ExpParser {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String exp = "(madding OR crowd) AND (ignoble OR strife) AND (killed OR slain)";
-		String exp1 = "coke and diet";
 		ExpParser e = new ExpParser();
 		String result = e.parse(exp);
 		System.out.println(result);

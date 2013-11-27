@@ -48,7 +48,7 @@
 	<classpathentry kind="lib" path="/Users/Trevor/Tools/hadoop-1.0.3/lib/slf4j-log4j12-1.4.3.jar"/>
 	<classpathentry kind="lib" path="/Users/Trevor/Tools/hadoop-1.0.3/lib/xmlenc-0.52.jar"/>
 	<classpathentry kind="lib" path="/Users/Trevor/Tools/hadoop-1.0.3/hadoop-core-1.0.3.jar"/>
-	<classpathentry kind="lib" path="/Users/Trevor/Tools/Cloud9/dist/cloud9-1.4.17.jar"/>
+	<classpathentry kind="lib" path="/Users/Trevor/Tools/Cloud9/dist/cloud9-1.4.17.jar" sourcepath="/Users/Trevor/Tools/Cloud9/src/dist"/>
 	<classpathentry kind="lib" path="/Users/Trevor/Tools/Cloud9/lib/bliki-core-3.0.16.jar"/>
 	<classpathentry kind="lib" path="/Users/Trevor/Tools/Cloud9/lib/guava-14.0-rc3.jar"/>
 	<classpathentry kind="output" path="bin"/>

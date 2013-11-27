@@ -2,7 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/Users/Trevor/Tools/hadoop-1.0.3/hadoop-core-1.0.3.jar"/>
 	<classpathentry kind="lib" path="/Users/Trevor/Tools/hadoop-1.0.3/lib/asm-3.2.jar"/>
 	<classpathentry kind="lib" path="/Users/Trevor/Tools/hadoop-1.0.3/lib/aspectjrt-1.6.5.jar"/>
 	<classpathentry kind="lib" path="/Users/Trevor/Tools/hadoop-1.0.3/lib/aspectjtools-1.6.5.jar"/>
@@ -51,5 +50,6 @@
 	<classpathentry kind="lib" path="/Users/Trevor/Tools/Cloud9/lib/bliki-core-3.0.16.jar"/>
 	<classpathentry kind="lib" path="/Users/Trevor/Tools/Cloud9/lib/guava-14.0-rc3.jar"/>
 	<classpathentry kind="lib" path="/Users/Trevor/Tools/Cloud9/dist/cloud9-1.4.17.jar"/>
+	<classpathentry kind="lib" path="/Users/Trevor/Tools/hadoop-1.2.1/hadoop-core-1.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
