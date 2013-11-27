@@ -1,13 +1,13 @@
-INDEX VERSION 1.126+/home/j/llc/cwang24/Projects/WikiQuery/.metadata/.plugins/org.eclipse.jdt.core
-2875007767.index
-3070157306.index
-2436539002.index
+INDEX VERSION 1.126+/Users/Trevor/Projects/WikiQuery/.metadata/.plugins/org.eclipse.jdt.core
+3954040986.index
+765977872.index
+3004609673.index
+4249315662.index
+2326659272.index
+770573466.index
+84777399.index
 2722800273.index
-3225794006.index
-2736947214.index
-3888625856.index
-1279614968.index
-4230751409.index
-3339362578.index
-4082114496.index
-2144902890.index
+3000285004.index
+272178059.index
+2875007767.index
+450555687.index
