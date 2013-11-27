@@ -14,33 +14,34 @@ public class ExpParser {
 				.compile("\\(|\\)|[^\\(\\)(OR)(AND)(NOT)\\s]+|((OR)|(AND)|(NOT))");
 		Matcher m = p.matcher(exp);
 		while (m.find()) {
-			if (m.group().matches("\\(")){
+			if (m.group().matches("\\(")) {
 				opStack.push(m.group());
-			}
-			else if (m.group().matches("[^\\(\\)(OR)(AND)(NOT)\\s]+")){
+			} else if (m.group().matches("[^\\(\\)(OR)(AND)(NOT)\\s]+")) {
 				outputQueue.add(m.group());
-			}
-			else if (m.group().matches("((OR)|(AND)|(NOT))")){
+			} else if (m.group().matches("((OR)|(AND)|(NOT))")) {
 				opStack.push(m.group());
-			}
-			else if (m.group().matches("\\)")){
-				while ((!opStack.isEmpty())&&(!opStack.peek().matches("\\("))){
+			} else if (m.group().matches("\\)")) {
+				while ((!opStack.isEmpty()) && (!opStack.peek().matches("\\("))) {
 					outputQueue.add(opStack.pop());
 				}
-				if (!opStack.isEmpty()){
+				if (!opStack.isEmpty()) {
 					opStack.pop();
-					if (!opStack.isEmpty() && opStack.peek().matches("((OR)|(AND)|(NOT))")){
+					if (!opStack.isEmpty()
+							&& opStack.peek().matches("((OR)|(AND)|(NOT))")) {
 						outputQueue.add(opStack.pop());
 					}
-				}else{
-					System.err.println("Invalid boolean expression format! " + exp);
+				} else {
+					System.err.println("Invalid boolean expression format! "
+							+ exp);
 				}
 			}
-					
-			System.out.println(m.group());
+
+			// System.out.println(m.group());
 		}
-		
-		
+		while ((!opStack.isEmpty())) {
+			outputQueue.add(opStack.pop());
+		}
+
 		return StringUtils.join(outputQueue, " ");
 
 	}
@@ -48,9 +49,10 @@ public class ExpParser {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String exp = "(madding OR crowd) AND (ignoble OR strife) AND (killed OR slain)";
-		String exp1 = "coke and diet";
+		String exp1 = "coke AND diet";
 		ExpParser e = new ExpParser();
 		String result = e.parse(exp);
-		System.out.println(result);
+		String result1 = e.parse(exp1);
+		System.out.println(result1);
 	}
 }
