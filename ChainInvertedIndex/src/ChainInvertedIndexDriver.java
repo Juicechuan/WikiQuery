@@ -20,7 +20,7 @@ public class ChainInvertedIndexDriver extends Configured implements Tool {
 		JobClient client = new JobClient();
 		JobConf conf = new JobConf(ChainInvertedIndexDriver.class);
 
-		conf.setInputFormat(WikipediaPageInputFormatOld.class);
+		conf.setInputFormat(WikipediaPageInputFormat.class);
 		conf.setOutputFormat(TextOutputFormat.class);
 
 		Path outputPath = new Path("output");
