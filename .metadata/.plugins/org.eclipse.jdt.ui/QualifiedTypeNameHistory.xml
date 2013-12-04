@@ -2,4 +2,24 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
 <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.FileInputFormat"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.FileOutputFormat"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.TextOutputFormat"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.Mapper"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.JobContext"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.JobID"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.RunningJob"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.JobConf"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.SequenceFileInputFormat"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.SequenceFileOutputFormat"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapred.JobClient"/>
+<fullyQualifiedTypeName name="edu.umd.cloud9.collection.wikipedia.WikipediaDocnoMapping"/>
+<fullyQualifiedTypeName name="edu.umd.cloud9.collection.wikipedia.WikipediaPageInputFormat"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.conf.Configuration"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.util.Tool"/>
+<fullyQualifiedTypeName name="edu.umd.cloud9.collection.wikipedia.WikipediaForwardIndex"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.fs.Path"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.fs.FileSystem"/>
+<fullyQualifiedTypeName name="edu.umd.cloud9.collection.wikipedia.WikipediaPage"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.util.ToolRunner"/>
 </qualifiedTypeNameHistroy>
