@@ -42,9 +42,9 @@ public class BuildIndexDriver extends Configured implements Tool {
 		ChainReducer.setReducer(conf, BuildIndexReducer.class, Text.class,
 				Text.class, Text.class, Text.class, true, reduceConf1);
 		// calculate statistics for tf-idf
-		JobConf mapConf3 = new JobConf(false);
-		ChainReducer.addMapper(conf, WordStatisticsMapper.class, Text.class,
-				Text.class, Text.class, Text.class, true, mapConf3);
+		//JobConf mapConf3 = new JobConf(false);
+		//ChainReducer.addMapper(conf, WordStatisticsMapper.class, Text.class,
+		//		Text.class, Text.class, Text.class, true, mapConf3);
 
 		RunningJob job = JobClient.runJob(conf);
 		job.waitForCompletion();

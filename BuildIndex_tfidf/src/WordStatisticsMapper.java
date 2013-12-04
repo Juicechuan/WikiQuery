@@ -5,36 +5,48 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.MapReduceBase;
 import org.apache.hadoop.mapred.Mapper;
 import org.apache.hadoop.mapred.OutputCollector;
-//import org.apache.hadoop.mapred.Reducer;
+import org.apache.hadoop.mapred.Reducer;
 import org.apache.hadoop.mapred.Reporter;
 
 public class WordStatisticsMapper extends MapReduceBase implements
-		Mapper<Text, Text, Text, Text> {
-	
+		Mapper<LongWritable, Text, Text, Text> {
+
 	private long numDocs;
-	
+	private long numTokens;
+
 	private int currentIndex = 0;
+	private Text keyOut = new Text();
 	private Text valOut = new Text();
-	
+
 	@Override
-	public void configure(JobConf conf){
-		//to do
+	public void configure(JobConf conf) {
+		// to do
+		numDocs = conf.getLong(
+				CollectWordStatisticsJob.NUMBER_OF_DOCUMENTS_KEY, 1);
+		numTokens = conf.getInt(CollectWordStatisticsJob.NUMBER_OF_TOKENS_KEY,
+				1);
 	}
-	
+
 	@Override
-	public void map(Text key, Text value, OutputCollector<Text, Text> output,
-			Reporter reporter) throws IOException {
+	public void map(LongWritable key, Text value,
+			OutputCollector<Text, Text> output, Reporter reporter)
+			throws IOException {
 
 		String val = "";
-		String postings = value.toString();
+		String line = value.toString();
+		String[] sp = line.split("\\s", 2);
+		String token = sp[0];
+		String postings = sp[1];
 
 		// process value
-		List<String> postinglist = Arrays.asList(StringUtils.split(postings,"|"));
+		List<String> postinglist = Arrays.asList(StringUtils.split(postings,
+				"|"));
 		int docFreq = postinglist.size();
 		List<Integer> termFreqList = new ArrayList<Integer>();
 		for (String s : postinglist) {
@@ -51,7 +63,9 @@ public class WordStatisticsMapper extends MapReduceBase implements
 				+ Integer.toString(currentIndex);
 
 		currentIndex++;
+		keyOut.set(token);
 		valOut.set(new Text(val));
-		output.collect(key, valOut);
+		output.collect(keyOut, valOut);
+
 	}
 }
