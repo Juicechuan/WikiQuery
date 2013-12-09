@@ -17,18 +17,23 @@ import edu.umd.cloud9.collection.wikipedia.WikipediaPage;
 public class BuildIndexMapper extends MapReduceBase implements
 		Mapper<LongWritable, WikipediaPage, Text, Text> {
 
-
 	private Text posting = new Text();
 	private Text word = new Text();
 
 	Pattern TOKEN = Pattern.compile("\\w+");
-	
+
 	@Override
 	public void map(LongWritable key, WikipediaPage value,
 			OutputCollector<Text, Text> output, Reporter reporter)
 			throws IOException {
+		String wiki_content = "";
+		try {
+			wiki_content = value.getContent();
+		} catch (Exception e) {
+			//it's fine when content is null
+		}
 
-		String content = value.getTitle() + ' ' + value.getContent();
+		String content = value.getTitle() + ' ' + wiki_content;
 		String docId = value.getDocid();
 		int offset = 0;
 

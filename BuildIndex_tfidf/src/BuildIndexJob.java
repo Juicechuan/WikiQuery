@@ -29,9 +29,9 @@ public class BuildIndexJob {
 		RJob.waitForCompletion();
 	}
 
-	public static RunningJob createJob(String input, String output, Configuration config)
-			throws IOException {
-		JobConf conf = new JobConf(config,BuildIndexJob.class);
+	public static RunningJob createJob(String input, String output,
+			Configuration config) throws IOException {
+		JobConf conf = new JobConf(config, BuildIndexJob.class);
 
 		conf.setInputFormat(WikipediaPageInputFormat.class);
 		conf.setOutputFormat(TextOutputFormat.class);
@@ -55,6 +55,8 @@ public class BuildIndexJob {
 		JobConf reduceConf1 = new JobConf(false);
 		ChainReducer.setReducer(conf, BuildIndexReducer.class, Text.class,
 				Text.class, Text.class, Text.class, true, reduceConf1);
+		reduceConf1.setNumReduceTasks(10);
+		conf.setNumReduceTasks(10);
 
 		RunningJob job = JobClient.runJob(conf);
 		return job;

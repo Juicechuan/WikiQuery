@@ -26,6 +26,8 @@ public class CollectWordStatisticsJob {
 		Configuration conf = new Configuration();
 		RunningJob firstJob = BuildIndexJob.createJob(args[0], args[1], conf);
 		firstJob.waitForCompletion();
+//		Path immediate_index = new Path(args[1]);
+//		immediate_index.getFileSystem(conf).delete(immediate_index, true);
 		long numDocs = firstJob
 				.getCounters()
 				.findCounter("org.apache.hadoop.mapred.Task$Counter",

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.math3.util.FastMath;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -43,28 +44,29 @@ public class WordStatisticsMapper extends MapReduceBase implements
 		String[] sp = line.split("\\s", 2);
 		String token = sp[0];
 		String postings = sp[1];
+		double idf = 0d;
 
 		// process value
 		List<String> postinglist = Arrays.asList(StringUtils.split(postings,
 				"|"));
 		int docFreq = postinglist.size();
-		List<Integer> termFreqList = new ArrayList<Integer>();
-		for (String s : postinglist) {
-			if (!s.isEmpty()) {
-				String[] split = s.split("=");
-				// String docID = split[0];
-				int termFreq = split[1].substring(1, split[1].length() - 1)
-						.split(",").length;
-				termFreqList.add(termFreq);
-			}
-		}
-		val = postings + ";" + StringUtils.join(termFreqList, ",") + ";"
-				+ Integer.toString(docFreq) + ";"
+		idf = FastMath.log(numDocs) - FastMath.log(docFreq);
+		// List<Integer> termFreqList = new ArrayList<Integer>();
+		// for (String s : postinglist) {
+		// if (!s.isEmpty()) {
+		// String[] split = s.split("=");
+		// // String docID = split[0];
+		// int termFreq = split[1].substring(1, split[1].length() - 1)
+		// .split(",").length;
+		// termFreqList.add(termFreq);
+		// }
+		// }
+		val = postings + ";" + Double.toString(idf) + ";"
 				+ Integer.toString(currentIndex);
 
 		currentIndex++;
 		keyOut.set(token);
-		valOut.set(new Text(val));
+		valOut.set(val);
 		output.collect(keyOut, valOut);
 
 	}

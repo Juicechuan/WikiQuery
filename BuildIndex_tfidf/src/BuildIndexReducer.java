@@ -35,7 +35,7 @@ public class BuildIndexReducer extends MapReduceBase implements
 			}
 		}
 
-		postinglist.set(new Text(StringUtils.join(uniquePos.entrySet(), "|")));
+		postinglist.set(StringUtils.join(uniquePos.entrySet(), "|"));
 		output.collect(key, postinglist);
 	}
 
