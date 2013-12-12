@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+     
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+  <style type="text/css">
+  .hero {
+    text-align: center;
+    margin-top: 6em;
+    margin-right: auto;
+    margin-bottom: 3em;
+    margin-left: auto;
+}
+
+	.hero h1 {
+    font-size: 128px;
+    margin-bottom: 0;
+    padding: 0;
+    color: #1f8dd6;
+    font-weight: 200;
+}
+	.hero h2 {
+	font-weight: 100;
+	font-size: 260%;
+	margin: 0.02em 0 0.8em;
+	color: #666;
+}
+
+	.hero-titles {
+	font-family: "omnes-pro", sans-serif;
+	padding: 0 2em;
+}
+	.hero-slides {
+	margin-left:auto;
+	margin-right:auto;
+}
+
+	body .primary-button {
+	background: #02a6eb;
+	color: #fff;
+	font-size: 20px;
+}
+
+	body .secondary-button {
+    background: #fff;
+    color: #666;
+    border: 1px solid #ddd;
+    font-size: 20px;
+}
+
+	iframe {
+    display: block;
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    border: 0;
+}
+
+	body .footer {
+    padding:40px;
+}
+
+
+  </style>
+</head>
+
+<body>
+	<div class="pure-g-r">
+		<div class="pure-u-1" id="main"> 
+			<div class="hero">
+				<div class="hero-titles">
+				 	<h1 class="splash" >SearchForFun</h1>	
+    				<h2>Search what you want on Wiki</h2>
+    			</div>
+			
+			
+				<form class="pure-form form-big" action="runquery" method="get" id="formsearch">
+				<fieldset>
+    				<input type="text" name="query" value="" 
+            			style="width: 350px; height:43px; font-size:20px" autocomplete="off">
+       				<button type="submit" class="pure-button primary-button"
+       				style="font-size:20px; height:43px">Search</button>
+       				
+       			</fieldset>
+				</form>
+			</div>
+			<div class="hero-slides">
+				<iframe align="middle" src="//slid.es/chuanwang/deck--2/embed"
+				width="576" height="420" scrolling="no" frameborder="0" 
+				webkitallowfullscreen mozallowfullscreen allowfullscreen>
+				</iframe>
+			</div>
+			<div class="pure-u-1 footer">
+				<div>
+					<p style="font-family: proxima-nova">
+					Thank for <a href="http://www.thisplusthat.me/">thisplusthat</a> and <a href="http://purecss.io/">PureCSS</a>'s nice work of web interface!</a>
+					</p>
+				</div>
+			</div>
+        </div>
+    </div>
+</body>
+</html>

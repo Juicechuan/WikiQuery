@@ -1,0 +1,118 @@
+<!-- BEGIN: main -->
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+  <style type="text/css">
+  .hero {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+	.hero h1 {
+    font-size: 128px;
+    margin-bottom: 0;
+    padding: 0;
+    color: #1f8dd6;
+    font-weight: 200;
+}
+	.hero h2 {
+	font-weight: 100;
+	font-size: 260%;
+	margin: 0.2em 0 0.2em;
+	color: #1f8dd6;
+}
+  .hero h3 { 
+    font-weight:100;  
+    color:#666; 
+    margin:10px;
+}
+
+	.hero-titles {
+	font-family: "omnes-pro", sans-serif;
+	padding: 0 2em;
+}
+
+	body .primary-button {
+	background: #02a6eb;
+	color: #fff;
+	font-size: 20px;
+}
+
+  body .result-container {
+    padding-left:1em;
+    padding-right:2em;
+    border-bottom:2px solid #eee;
+  }
+
+  body .result-content {
+    font-family: proxima-nova;
+    font-size: 120%;
+    text-align: left;
+    line-height: 1.0em;
+}
+
+  a {
+    color: #3b8bba;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: #265778;
+  }
+  .alignleft {
+        float: left;
+  }
+
+  .alignright {
+        float: right;
+  }
+  </style>
+<title>{TITLE}</title>
+</head>
+<body>
+<div class="pure-g-r">
+  <div class="pure-u-1" style="text-align:center;padding:0 2em;">
+    <div class="hero">
+      <a href="/"><h2 class="splash-small">SearchForFun</h2></a>
+      <h3> Search what you want on Wiki</h3>
+
+
+      <form class="pure-form form-big" action="runquery" method="get" id="formsearch">
+        <fieldset>
+            <input type="text" name="query" value="{QUERY}" 
+                  style="width: 350px; height:43px; font-size:20px" autocomplete="off">
+              <button type="submit" class="pure-button primary-button"
+              style="font-size:20px; height:43px">Search</button>
+            </fieldset>
+      </form>
+    </div>
+
+    <p style="text-align:left;padding-left:2em">
+    The search process for your query takes {TIME} seconds.
+    </p>
+    <!-- BEGIN: result -->
+      <div class="pure-g-r result-container">
+        <div class="pure-u-2-5" style="width:30%">
+          <a href="{LINK}">
+            <h3 class="result-title" style="font-size:25px;margin:1em;font-family:omnes-pro;">
+             {WIKI_TITLE} 
+            </h3>
+          </a>
+        </div>
+        <div class="pure-u-3-5" style="width:70%">
+          <div class="result-content">
+            <p style="font-size:19px">{SNIPPETS}</p>
+            <div id="textbox" style="font-weight:100">
+            	<p class="alignleft"></p>
+            	<p class="alignright">Score: {SCORE}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- END: result -->
+  </div>
+</div>
+</body>
+</html>
+<!-- END: main -->
