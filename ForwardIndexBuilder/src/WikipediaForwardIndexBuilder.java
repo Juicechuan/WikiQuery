@@ -72,13 +72,15 @@ public class WikipediaForwardIndexBuilder extends Configured implements Tool {
     private int fileno;
     private String language;
 
-    public void configure(JobConf job) {
+    @Override
+	public void configure(JobConf job) {
       String file = job.get("map.input.file");
       fileno = Integer.parseInt(file.substring(file.indexOf("part-") + 7));
       language = job.get("wiki.language");
     }
 
-    public void run(RecordReader<IntWritable, WikipediaPage> input,
+    @Override
+	public void run(RecordReader<IntWritable, WikipediaPage> input,
         OutputCollector<IntWritable, Text> output, Reporter reporter) throws IOException {
       IntWritable key = new IntWritable();
       //WikipediaPage value = WikipediaPageFactory.createWikipediaPage(language);

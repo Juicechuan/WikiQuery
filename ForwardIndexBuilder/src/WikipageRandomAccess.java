@@ -17,7 +17,7 @@ public class WikipageRandomAccess extends Configured implements Tool{
 		// TODO Auto-generated method stub
 		Configuration conf = getConf();
 		WikipediaForwardIndex f = new WikipediaForwardIndex(conf);
-		f.loadIndex(new Path("sample-enwiki.findex.dat"), new Path("sample-enwiki-docno.dat"), FileSystem.get(conf));
+		f.loadIndex(new Path("sample-enwiki-findex.dat"), new Path("sample-enwiki-docno.dat"), FileSystem.get(conf));
 		
 		WikipediaPage page;
 

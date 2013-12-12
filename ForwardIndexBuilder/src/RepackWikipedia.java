@@ -29,6 +29,8 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.SequenceFile;
+import org.apache.hadoop.mapred.FileInputFormat;
+import org.apache.hadoop.mapred.FileOutputFormat;
 import org.apache.hadoop.mapred.JobClient;
 import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.MapReduceBase;
@@ -198,13 +200,13 @@ public class RepackWikipedia extends Configured implements Tool {
 
 		conf.setNumReduceTasks(0);
 
-		SequenceFileInputFormat.addInputPath(conf, new Path(inputPath));
-		SequenceFileOutputFormat.setOutputPath(conf, new Path(outputPath));
+		FileInputFormat.addInputPath(conf, new Path(inputPath));
+		FileOutputFormat.setOutputPath(conf, new Path(outputPath));
 
 		if ("none".equals(compressionType)) {
-			SequenceFileOutputFormat.setCompressOutput(conf, false);
+			FileOutputFormat.setCompressOutput(conf, false);
 		} else {
-			SequenceFileOutputFormat.setCompressOutput(conf, true);
+			FileOutputFormat.setCompressOutput(conf, true);
 
 			if ("record".equals(compressionType)) {
 				SequenceFileOutputFormat.setOutputCompressionType(conf,

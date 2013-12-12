@@ -111,7 +111,8 @@ public class DocumentForwardIndexHttpServer extends Configured implements Tool {
     static final long serialVersionUID = 8253865405L;
     static final Random r = new Random();
 
-    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,
+    @Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,
         IOException {
       res.setContentType("text/html");
       PrintWriter out = res.getWriter();
@@ -191,12 +192,14 @@ public class DocumentForwardIndexHttpServer extends Configured implements Tool {
   public static class FetchDocidServlet extends HttpServlet {
     static final long serialVersionUID = 3986721097L;
 
-    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,
+    @Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,
         IOException {
       doPost(req, res);
     }
 
-    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException,
+    @Override
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException,
         IOException {
       LOG.info("triggered servlet for fetching document by docid");
       String docid = null;
@@ -238,12 +241,14 @@ public class DocumentForwardIndexHttpServer extends Configured implements Tool {
   public static class FetchDocnoServlet extends HttpServlet {
     static final long serialVersionUID = 5970126341L;
 
-    public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,
+    @Override
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException,
         IOException {
       doPost(req, res);
     }
 
-    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException,
+    @Override
+	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException,
         IOException {
       LOG.info("triggered servlet for fetching document by docno");
 
@@ -282,7 +287,8 @@ public class DocumentForwardIndexHttpServer extends Configured implements Tool {
   public static final String INDEX_OPTION = "index";
   public static final String MAPPING_OPTION = "docnoMapping";
 
-  @SuppressWarnings("static-access")
+  @Override
+@SuppressWarnings("static-access")
   public int run(String[] args) throws Exception {
     Options options = new Options();
     options.addOption(OptionBuilder.withArgName("path").hasArg()
